@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sleepjob
+spec:
+  template:
+    metadata:
+      name: pod-spec
+    spec:
+      containers:
+        - name: job
+          image: busybox
+          args:
+            - /bin/sh
+            - -c
+            - date; echo sleeping....; sleep 60s; echo exiting...; date
+      restartPolicy: Never

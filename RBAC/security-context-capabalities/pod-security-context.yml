@@ -1,0 +1,19 @@
+## pods/security/security-context.yaml 
+## pods level setting (Can effect all containers within pod if container setting is not present) 
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo
+spec:
+  securityContext:
+    runAsUser: 0
+  containers:
+  - name: sec-ctx-demo
+    image: busybox
+    command: [ "sh", "-c", "sleep 1h" ]
+    securityContext:
+      capabilities:
+        drop: ["CHOWN"]
+
+

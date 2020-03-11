@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ebs-pd-pod
+spec:
+  containers:
+  - image: k8s.gcr.io/test-webserver
+    name: ebspd-container
+    volumeMounts:
+    - mountPath: /test-ebs
+      name: ebspd-volume
+  volumes:
+  - name: ebspd-volume
+    # This AWS EBS volume must already exist.
+    awsElasticBlockStore:
+      volumeID: vol-0f9fc300009889acb
+      fsType: ext4

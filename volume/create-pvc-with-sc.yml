@@ -1,0 +1,12 @@
+# pvc-storageclass.yml
+apiVersion: v1
+kind: PersistentVolumeClaim 
+metadata:
+  name: pvc-from-sc
+spec:
+  resources:
+    requests:
+      storage: 30Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: standard-ebs

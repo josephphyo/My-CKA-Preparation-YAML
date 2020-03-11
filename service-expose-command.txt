@@ -1,0 +1,1 @@
+# kubectl expose deployment nginx-deploy --port= --target-port= --type=NodePort --name=service-name

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: manual-schedule-pod
+spec:
+  containers:
+  - image: nginx
+    name: schedule-pod
+  nodeName: worker02

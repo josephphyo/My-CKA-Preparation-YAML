@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "3"
+    kubernetes.io/change-cause: kubectl set image deployment/nginx nginx=nginx:1.7.1
+      --record=true --output=yaml --dry-run=true
+  creationTimestamp: "2020-02-18T08:39:18Z"
+  generation: 4
+  labels:
+    run: nginx
+  name: nginx
+  namespace: default
+  resourceVersion: "859549"
+  selfLink: /apis/apps/v1/namespaces/default/deployments/nginx
+  uid: 8917e6f9-aea8-43fd-bd38-18ab6f71ef9a
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      run: nginx
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: nginx
+    spec:
+      containers:
+      - image: nginx:1.9.1
+        imagePullPolicy: Always
+        name: nginx
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 3
+  conditions:
+  - lastTransitionTime: "2020-02-18T08:39:30Z"
+    lastUpdateTime: "2020-02-18T08:39:30Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2020-02-18T08:39:18Z"
+    lastUpdateTime: "2020-02-18T11:01:02Z"
+    message: ReplicaSet "nginx-5dbb8c7fcb" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 4
+  readyReplicas: 3
+  replicas: 5
+  updatedReplicas: 3

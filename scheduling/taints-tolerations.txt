@@ -1,0 +1,14 @@
+Taints = nodes 
+Tolerations = pods 
+
+
+# kubectl taint nodes node-name key=value:taint-effect 
+
+taint-effect = NoSchedule, PreferNoSchedule, NoExecute 
+
+eg: 
+
+# kubectl taint nodes node01 app=blue:NoSchedule  ( add taint to node01 )
+# kubectl taint nodes node01 app=blue:NoSchedule- (remove taint to node01)
+
+# kubectl describe node master | grep Taint

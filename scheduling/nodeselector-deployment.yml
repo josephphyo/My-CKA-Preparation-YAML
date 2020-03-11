@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: nginx-deploy
+  name: nginx-deploy
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      run: nginx-deploy
+  template:
+    metadata:
+      labels:
+        run: nginx-deploy
+    spec:
+      containers:
+      - image: nginx
+        name: nginx-deploy
+      nodeSelector:  
+        size: king

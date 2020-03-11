@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-backend-clusterip-svc
+spec:
+  ports:
+  - port: 80
+    targetPort: 6379
+  selector:
+    app: redis
+  type: ClusterIP 
+

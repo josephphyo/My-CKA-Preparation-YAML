@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis-pod 
+spec:
+  containers:
+    - name: redis
+      image: redis 
+      volumeMounts:
+      - name: config-volume
+        mountPath: /redis-master 
+  volumes:
+    - name: config-volume
+      configMap:
+        # Provide the name of the ConfigMap containing the files you want
+        # to add to the container
+        name: redis-config-file

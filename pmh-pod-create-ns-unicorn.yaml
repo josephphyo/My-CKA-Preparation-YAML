@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: phyominhtun
+  name: phyominhtun
+  namespace: unicorn 
+spec:
+  containers:
+  - image: nginx
+    name: nginx
+  - image: redis
+    name: redis 

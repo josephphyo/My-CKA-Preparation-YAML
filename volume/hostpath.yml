@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostpath-volume-pod
+  labels:
+    app: hopper
+spec:
+  containers:
+  - name: hopper
+    image: phyominhtun/hopper-build
+    volumeMounts:
+    - mountPath: /data
+      name: data-volume
+    ports:
+    - containerPort: 80
+  volumes:
+    - name: data-volume
+      hostPath:
+          path: /data 

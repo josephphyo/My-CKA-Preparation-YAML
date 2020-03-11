@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: hopper-rs
+spec: 
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hopperapp
+  template:
+    metadata:
+      labels:
+        app: hopperapp 
+    spec:
+      containers:
+        - name: hopper 
+          image: eddiehale/hellonodeapi
+          ports: 
+          - containerPort: 80

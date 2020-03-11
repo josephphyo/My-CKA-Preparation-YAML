@@ -1,0 +1,15 @@
+# pv.yml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: third-pv-create
+spec:
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ebs-ssd
+  persistentVolumeReclaimPolicy: Delete
+  awsElasticBlockStore:
+    volumeID: vol-0e361624837f47f39
+    fsType: ext4
