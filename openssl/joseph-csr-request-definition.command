@@ -6,7 +6,7 @@ kind: CertificateSigningRequest
 metadata:
   name: joseph
 spec:
-  request: $(cat /Users/phyominhtun/Documents/kubernetes-yaml/openssl/joseph.csr | base64 | tr -d '\n')
+  request: $(cat `pwd`/joseph.csr | base64 | tr -d '\n')
   usages:
   - digital signature
   - key encipherment
